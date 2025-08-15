@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 { 
+  font-size: 42px;
+  color: #4A90E2;
+  text-shadow: 4px 4px 6px #D1C8EC;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 30px;
+  width: 500px;
+  height: 200px;
+  background-color: beige;
+  align-content: center;
+}
+
+nav a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 80px;
+  background-color: pink;
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: gray;
+}
