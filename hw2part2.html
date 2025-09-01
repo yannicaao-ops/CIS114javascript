@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- Written by MAN IN AO, 15  AUG 2025 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="CIS 114 Assignments page with links to homework exercises.">
+  <title>CIS 114 Assignments</title>
+  <link rel="stylesheet" href="cssstyle.css">
+</head>
+
+<body>
+
+<h1>homework 2</h1>
+<h3>Basic Operations</h3>
+
+<ul>
+<li><a href="index.html">Homepage</a></li>
+<li><a href="hw2.html">HW2-Main Page</a></li>
+<li><a href="hw2part1.html">HW2-Part1</a></li>
+<li><a href="hw2extracredit.html">HW2-Extracredit</a></li>
+</ul>
+
+
+<form name="myform">
+  Enter first number: <input type="number" name="number1"><br>
+  Enter second number: <input type="number" name="number2"><br>
+  Enter third number: <input type="number" name="number3"><br>
+  <input type="button" value="Calculate" onclick="calculate()">
+  <input type="reset" value="Reset">
+</form>
+<textarea id="result" readonly></textarea>
+
+<script>
+function calculate()
+{
+  var number1, number2, number3, n1, n2, n3, nsum , naverage, nproduct, nsmallest, nlargest , result;
+  //get the value from the input field//
+  number1 = document.forms["myform"].elements["number1"].value;
+  number2 = document.forms["myform"].elements["number2"].value;
+  number3 = document.forms["myform"].elements["number3"].value;
+  //convert the string to number//
+  n1 = parseInt(number1);
+  n2 = parseInt(number2);
+  n3 = parseInt(number3);
+
+  //Validation: check if the input is a number//
+  if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+    document.getElementById("result").value = "Please enter valid numbers in all input boxes.";
+    return;
+  }
+
+  //calculate the sum, average, product, smallest, largest//
+  nsum = n1 + n2 + n3;
+  naverage = nsum / 3;
+  nproduct = n1 * n2 * n3;
+  nsmallest = Math.min(n1, n2, n3);
+  nlargest = Math.max(n1, n2, n3);
+
+  //display result//
+  document.getElementById("result").value = 
+  "Sum: " + nsum + "\n" +
+  "Average: " + naverage + "\n" +
+  "Product: " + nproduct + "\n" +
+  "Smallest: " + nsmallest + "\n" +
+  "Largest: " + nlargest;
+}
+</script>
+
+<style>
+  #result {
+    width: 300px;
+    height: 150px;
+    margin-top: 10px;
+  }
+  input {text-align: center;}
+</style>
+
+</body>
+</html>

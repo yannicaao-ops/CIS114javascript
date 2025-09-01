@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- Written by MAN IN AO, 15  AUG 2025 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="CIS 114 Assignments page with links to homework exercises.">
+  <title>CIS 114 Assignments</title>
+  <link rel="stylesheet" href="cssstyle.css">
+</head>
+
+<body>
+
+<h1>homework 2</h1>
+<h3>Basic Operations</h3>
+
+<ul>
+<li><a href="index.html">Homepage</a></li>
+<li><a href="hw2.html">HW2-Main Page</a></li>
+<li><a href="hw2part1.html">HW2-Part1</a></li>
+<li><a href="hw2part2.html">HW2-Part2</a></li>
+</ul>
+
+
+<h2>Currency Conversion Table</h2>
+
+<table>
+  <tr>
+    <th>Currency</th>
+    <th>Rate</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>Euro</td>
+    <td>0.92</td>
+    <td><input type="text" id="eresult" readonly></td>
+  </tr>
+  <tr>
+    <td>Canadian Dollar</td>
+    <td>1.38</td>
+    <td><input type="text" id="cresult" readonly></td>
+  </tr>
+  <tr>
+    <td>Hong Kong Dollar</td>
+    <td>7.81</td>
+    <td><input type="text" id="hresult" readonly></td>
+  </tr>
+  <tr>
+    <td>Japanese Yen</td>
+    <td>156.73</td>
+    <td><input type="text" id="jresult" readonly></td>
+  </tr>
+  <tr>
+    <td>Mexican Peso</td>
+    <td>18.41</td>
+    <td><input type="text" id="mresult" readonly></td>
+  </tr>
+  <tr>
+    <td>Enter Amount of U.S. Dollars</td>
+    <td><input type="number" id="usdAmount" placeholder="USD"></td>
+    <td><span id="textmes" style="color: red;"></span></td>
+  </tr>
+</table>
+<br>
+  <input type="button" value="Calculate" onclick="calculaterate()">
+<br>
+  <input type="reset" value="Reset" onclick="
+    document.getElementById('eresult').value = '';
+    document.getElementById('cresult').value = '';
+    document.getElementById('hresult').value = '';
+    document.getElementById('jresult').value = '';
+    document.getElementById('mresult').value = '';
+    document.getElementById('usdAmount').value = '';
+  ">
+
+
+
+<script>
+function calculaterate()
+{
+  var usd = parseFloat(document.getElementById("usdAmount").value) ,
+      eresult, cresult, hresult, jresult, mresult, textmes;
+  
+  //Validation: check if the input is a number//
+  if (isNaN(usd) || usd < 0) {
+    document.getElementById("textmes").innerText = "Enter a non-negative number";
+    document.getElementById("eresult").value = '';
+    document.getElementById("cresult").value = '';
+    document.getElementById("hresult").value = '';
+    document.getElementById("jresult").value = '';
+    document.getElementById("mresult").value = '';
+    return;
+  } else {
+    document.getElementById("textmes").innerText = "";
+  }
+  // Conversion calculations
+  document.getElementById("eresult").value = (usd * 0.92).toFixed(2);
+  document.getElementById("cresult").value = (usd * 1.38).toFixed(2);
+  document.getElementById("hresult").value = (usd * 7.81).toFixed(2);
+  document.getElementById("jresult").value = (usd * 156.73).toFixed(2);
+  document.getElementById("mresult").value = (usd * 18.41).toFixed(2);
+  
+
+}
+</script>
+
+</body>
+</html>
