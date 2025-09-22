@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!-- Written by MAN IN AO, SEP 15  2025 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="JavaScript Assignments page with links to homework exercises.">
+  <title>JavaScript Assignments</title>
+  <link rel="stylesheet" href="cssstyle.css">
+</head>
+
+<body>
+
+<h3>homework 3 Functions</h3>
+
+<ul>
+<li><a href="index.html">Homepage</a></li>
+<li><a href="hw3.html">HW3-Main Page</a></li>
+<li><a href="hw3part1.html">HW3-Part1</a></li>
+</ul>
+
+
+<h3>Salesperson Weekly Earnings Calculator</h3>
+<p>For each item, type the quantity sold by the seller:</p>
+
+<form id="salesForm">
+  Item 1: <input type="number" id="qty1" min="0"><br>
+  Item 2: <input type="number" id="qty2" min="0"><br>
+  Item 3: <input type="number" id="qty3" min="0"><br>
+  Item 4: <input type="number" id="qty4" min="0"><br><br>
+
+  <input type="button" value="Submit" onclick="calculateEarnings()">
+  <input type="reset" value="Clear Form" onclick="clearResults()">
+</form>
+<br>
+<p id="result" style="color:red;"></p>
+
+<table>
+  <tr>
+    <th>Item#</th>
+    <th>Price ($)</th>
+    <th>Qty Sold</th>
+    <th>Total ($)</th>
+  </tr>
+  <tr>
+    <td>Item 1</td>
+    <td>20.99</td>
+    <td><input type="text" id="showQty1" readonly></td>
+    <td><input type="text" id="total1" readonly></td>
+  </tr>
+  <tr>
+    <td>Item 2</td>
+    <td>12.75</td>
+    <td><input type="text" id="showQty2" readonly></td>
+    <td><input type="text" id="total2" readonly></td>
+  </tr>
+  <tr>
+    <td>Item 3</td>
+    <td>9.95</td>
+    <td><input type="text" id="showQty3" readonly></td>
+    <td><input type="text" id="total3" readonly></td>
+  </tr>
+  <tr>
+    <td>Item 4</td>
+    <td>35.89</td>
+    <td><input type="text" id="showQty4" readonly></td>
+    <td><input type="text" id="total4" readonly></td>
+  </tr>
+  <tr>
+    <th colspan="3" style="text-align:left;">Total Amount Sold ($)</th>
+    <td><input type="text" id="totalSold" readonly></td>
+  </tr>
+  <tr>
+    <th colspan="3" style="text-align:left;">Total Weekly Earnings ($)</th>
+    <td><input type="text" id="weeklyEarnings" readonly></td>
+  </tr>
+</table>
+
+<script>
+  function calculateEarnings() {
+ 	var item1, item2, item3, item4;
+  	var prices = [20.99, 12.75, 9.95, 35.89];
+  	var quantities = [];
+  	var totalSold = 0;
+ 
+ // Check for valid input
+  for (let i = 0; i < 4; i++) {
+    let qty = document.getElementById("qty" + (i + 1)).value;
+    if (qty === "" || isNaN(qty) || qty < 0) {
+      document.getElementById("result").innerText = "Error: Please enter valid non-negative numbers for all quantities.";
+      return;
+    }
+  }
+  document.getElementById("result").innerText = ""; // Clear previous error message
+  
+
+ // Calculate totals per item
+  for (let i = 0; i < 4; i++) {
+    let qty = parseInt(document.getElementById("qty" + (i + 1)).value);
+    quantities.push(qty);
+    let itemTotal = prices[i] * qty;
+    totalSold += itemTotal;
+    document.getElementById("total" + (i + 1)).value = itemTotal.toFixed(2);
+    document.getElementById("showQty" + (i + 1)).value = qty;
+  }
+
+ 
+	// Calculate weekly earnings: base 250 + 9% commission
+  let weeklyEarnings = 250 + (0.09 * totalSold);
+  document.getElementById("totalSold").value = totalSold.toFixed(2);
+  document.getElementById("weeklyEarnings").value = weeklyEarnings.toFixed(2);
+
+ // Clear results function
+  function clearResults() {
+    document.getElementById("result").value = "";
+    for (let i = 1; i <= 4; i++) {
+      document.getElementById("showQty" + i).value = "";
+      document.getElementById("total" + i).value = "";
+    }
+    document.getElementById("totalSold").value = "";
+    document.getElementById("weeklyEarnings").value = "";
+
+  }
+  }
+</script>
+ 
+</body>
+</html>
