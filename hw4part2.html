@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- Written by MAN IN AO, 3 OCT 2025 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="JavaScript Assignments page with links to homework exercises.">
+  <title>JavaScript Assignments</title>
+  <link rel="stylesheet" href="cssstyle.css">
+</head>
+
+<body>
+
+<h3>homework 4 </h3>
+
+<ul>
+<li><a href="index.html">Homepage</a></li>
+<li><a href="hw4.html">HW4-Main Page</a></li>
+<li><a href="hw4part1.html">HW4-Part1</a></li>
+</ul>
+
+<h3>Learn Multiplication</h3>
+  <div id="hw4-part2">
+    <div id="tables"></div>
+  </div>
+
+  <script>
+  // Get the container
+    const container = document.getElementById("tables");
+
+    // Outer loop: multipliers 5 to 9
+    for (let multiplier = 5; multiplier <= 9; multiplier++) {
+      // Create table element
+      const table = document.createElement("table");
+
+      // Create header row
+      const header = document.createElement("tr");
+      const th1 = document.createElement("th");
+      th1.textContent = "Number";
+      const th2 = document.createElement("th");
+      th2.textContent = "Multiplier (" + multiplier + ")";
+      const th3 = document.createElement("th");
+      th3.textContent = "Result";
+
+      header.appendChild(th1);
+      header.appendChild(th2);
+      header.appendChild(th3);
+      table.appendChild(header);
+
+      // Inner loop: numbers 1 to 9
+      for (let num = 1; num <= 9; num++) {
+        const row = document.createElement("tr");
+
+        const td1 = document.createElement("td");
+        td1.textContent = num;
+
+        const td2 = document.createElement("td");
+        td2.textContent = multiplier;
+
+        const td3 = document.createElement("td");
+        td3.textContent = num * multiplier;
+
+        row.appendChild(td1);
+        row.appendChild(td2);
+        row.appendChild(td3);
+
+        table.appendChild(row);
+      }
+
+      // Append each table to the container
+      container.appendChild(table);
+    }
+  </script>
+
+
+</body>
+</html>

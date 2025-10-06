@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- Written by MAN IN AO, 15  SEP 2025 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="JavaScript Assignments page with links to homework exercises.">
+  <title>JavaScript Assignments</title>
+  <link rel="stylesheet" href="cssstyle.css">
+</head>
+
+<body>
+
+<h1>homework 4</h1>
+
+<ul>
+<li><a href="index.html">Homepage</a></li>
+<li><a href="hw4.html">HW4-Main Page</a></li>
+<li><a href="hw4part2.html">HW4-Part2</a></li>
+</ul>
+
+
+<h3>Part 1: Using a For Loop</h3>
+<p id="forResult"></p>
+
+<h3>Part 2: Using a While Loop</h3>
+<p id="whileResult"></p>
+
+<script>
+  // Part 1: Using a For Loop
+  let sumFor = 0;
+  let productFor = 1;
+  let forNumbers = [];
+  for (let i = 5; i <= 25; i += 4) {
+    sumFor += i;
+    productFor *= i;
+    forNumbers.push(i);
+  }
+ document.getElementById("forResult").innerHTML = 
+  "The result of " + forNumbers.join(" * ") + " is " + productFor.toLocaleString() + "<br>" +
+  "The result of " + forNumbers.join(" + ") + " is " + sumFor.toLocaleString();
+
+  // Part 2: Using a While Loop
+  let sumWhile = 0;
+  let productWhile = 1;
+  let whileNumbers = [];
+  let j = 3;
+
+  while (j <= 18) {
+    sumWhile += j;
+    productWhile *= j;
+    whileNumbers.push(j);
+    j += 3;
+  }
+  document.getElementById("whileResult").innerHTML = 
+    "The result of " + whileNumbers.join(" * ") + " is " + productWhile.toLocaleString() + "<br>" +
+    "The result of " + whileNumbers.join(" + ") + " is " + sumWhile.toLocaleString();
+  </script>
+</body>
+</html>
