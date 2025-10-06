@@ -103,30 +103,31 @@ th {
 }
 
 /* hw4 part2 - Styling */
-#hw4-part2 table {
+#hw4part2 table {
   margin: 15px auto;
   border-collapse: collapse;
   width: 250px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-#hw4-part2 th, 
-#hw4-part2 td {
+#hw4part2 th, 
+#hw4part2 td {
   border: 1px solid #ccc;
   padding: 5px;
   text-align: left;
 }
 
-#hw4-part2 th {
+#hw4part2 th {
   background-color: #9f3c19;
   color: white;
 }
 
 /* Alternate row colors */
-#hw4-part2 tr:nth-child(even) td {
+#hw4part2 tr:nth-child(even) td {
   background-color: white;
 }
 
-#hw4-part2 tr:nth-child(odd) td {
+#hw4part2 tr:nth-child(odd) td {
   background-color: #b4b3b3;
 }
+
