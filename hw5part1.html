@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!-- Written by MAN IN AO, 24 OCT 2025 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="JavaScript Assignments page with links to homework exercises.">
+  <title>JavaScript Assignments</title>
+  <link rel="stylesheet" href="cssstyle.css">
+</head>
+
+<body>
+
+<h1>homework 5</h1>
+
+<ul>
+<li><a href="index.html">Homepage</a></li>
+<li><a href="hw5.html">HW5-Main Page</a></li>
+<li><a href="hw5part2.html">HW5-Part2</a></li>
+</ul>
+
+
+<h3>HW5Part 1: Preference Questionnaire</h3>
+<form id="questionnaire">
+  <!-- Full Name -->
+  <div>
+    <label for="fullname">Full Name:</label><br>
+    <input type="text" id="fullname" name="fullname">
+  </div>
+
+  <!-- Age Group -->
+  <div>
+    <label>Age Group:</label><br>
+    <input type="radio" id="age1" name="age" value="less than 21">
+    <label for="age1">Less than 21</label><br>
+
+    <input type="radio" id="age2" name="age" value="between 21 and 50">
+    <label for="age2">Between 21 and 50</label><br>
+
+    <input type="radio" id="age3" name="age" value="older than 50">
+    <label for="age3">Older than 50</label>
+  </div>
+
+  <!-- Browsers Used -->
+  <div>
+    <label>Browsers you have used:</label><br>
+    <input type="checkbox" id="firefox" name="browser" value="Firefox">
+    <label for="firefox">Firefox</label><br>
+
+    <input type="checkbox" id="edge" name="browser" value="Edge">
+    <label for="edge">Edge</label><br>
+
+    <input type="checkbox" id="chrome" name="browser" value="Chrome">
+    <label for="chrome">Chrome</label><br>
+
+    <input type="checkbox" id="safari" name="browser" value="Safari">
+    <label for="safari">Safari</label>
+  </div>
+
+  <!-- Movie Type -->
+  <div>
+    <label for="movie">Preferred Movie Type:</label><br>
+    <select id="movie" name="movie">
+      <option value="">--Select--</option>
+      <option value="Action">Action</option>
+      <option value="Comedy">Comedy</option>
+      <option value="Drama">Drama</option>
+      <option value="Documentary">Documentary</option>
+      <option value="Science Fiction">Science Fiction</option>
+    </select>
+  </div>
+
+  <!-- Buttons -->
+  <button type="button" onclick="validateForm()">Submit</button>
+  <button type="reset" onclick="clearMessage()">Clear</button>
+</form>
+
+<!-- Output Area -->
+<p id="result"></p>
+
+<script>
+function validateForm() {
+  let result = document.getElementById("result");
+  result.style.color = "darkred";
+  result.textContent = ""; // clear previous message
+
+  let name = document.getElementById("fullname").value.trim();
+  let ageSelected = document.querySelector('input[name="age"]:checked');
+  let browsersChecked = document.querySelectorAll('input[name="browser"]:checked');
+  let movie = document.getElementById("movie").value;
+
+  // Error messages
+  if (!name) {
+    result.textContent = "Please enter your full name.";
+    return;
+  }
+  if (!ageSelected) {
+    result.textContent = "Please select your age group.";
+    return;
+  }
+  if (browsersChecked.length === 0) {
+    result.textContent = "Please select at least one browser you have used.";
+    return;
+  }
+  if (!movie) {
+    result.textContent = "Please select your preferred movie type.";
+    return;
+  }
+
+  // If all fields are valid
+  result.style.color = "green";
+  result.textContent = "Thanks, your data was submitted!";
+}
+
+function clearMessage() {
+  document.getElementById("result").textContent = "";
+}
+</script>
+
+</body>
+</html>
