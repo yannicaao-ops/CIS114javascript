@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- Written by MAN IN AO,November 10, 2025 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="JavaScript Assignments page with links to homework exercises.">
+  <link rel="stylesheet" href="cssstyle.css">
+  <title>Character Exercise</title>
+<script>
+function searchCharacter() {  
+  let content = document.getElementById("content").value;
+  let letter = document.getElementById("letter").value;
+  let result = document.getElementById("result");
+
+  // clear previous result
+  result.value = "";
+
+  // validate single character input
+  if (letter.length !== 1) {
+    alert("Please enter exactly one character.");
+    return;
+  }
+
+  // make both lowercase for case-insensitive comparison 
+  let lowerContent = content.toLowerCase();
+  let lowerLetter = letter.toLowerCase();
+  let count = 0;
+
+  for (let i = 0; i < lowerContent.length; i++) {
+    if (lowerContent[i] === lowerLetter) {
+      count++;
+    }
+  }
+
+  if (count > 0) {
+    result.value = "The character '" + letter + "' appears " + count + " time(s) in the text.";
+  } else {
+    // open a small popup window if character not found
+    let newWin = window.open("", "NotFoundWindow", "width=300,height=100,left=500,top=200");
+    newWin.document.write("<p>Search character '" + letter + "' not found in the content you typed.</p>");
+    newWin.document.write("<button onclick='window.close()'>Close</button>");
+    
+    // clear all input areas if the character was not found
+    result.value = "";
+    document.getElementById("content").value = "";
+    document.getElementById("letter").value = "";
+  }
+}
+</script>
+</head>
+
+<body>
+<h3>Homework 6</h3>
+
+<ul>
+  <li><a href="index.html">Homepage</a></li>
+  <li><a href="hw6.html">HW6-Main Page</a></li>
+  <li><a href="hw6part1.html">HW6-Part1</a></li>
+</ul>
+
+<h3>HW6 Part 2: Character Search Exercise</h3>
+<form onsubmit="event.preventDefault(); searchCharacter();">
+  <label>Enter your content:</label><br>
+  <textarea id="content" rows="6" cols="60"></textarea><br><br>
+
+  <label>Enter a single character:</label><br>
+  <input type="text" id="letter" maxlength="1"><br><br>
+
+  <input type="submit" value="Search">
+  <input type="reset" value="Reset"><br><br>
+
+  <label>Result:</label><br>
+  <textarea id="result" rows="2" cols="60" readonly></textarea>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- Written by MAN IN AO, November 10, 2025 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="JavaScript Assignments page with links to homework exercises.">
+  <title>Number Exercise</title>
+  <link rel="stylesheet" href="cssstyle.css">
+<script>
+function roundNumber() {
+    var re = new RegExp("^-?\\d+\\.\\d{4,}$");
+    var errMsg = "Invalid input - type a number with at least 4 decimals";
+    var inputVal = document.getElementById("number").value;
+
+    if (inputVal === "" || !re.test(inputVal)) {
+        document.getElementById("errOut").innerHTML = errMsg;
+        document.getElementById("output").value = "";
+        return;
+    }
+
+    var num = parseFloat(inputVal);
+
+    var result =
+        "The entered number: " + num +
+        "\nRounded to the nearest integer = " + Math.round(num) +
+        "\nSquare root rounded to integer = " + Math.round(Math.sqrt(num)) +
+        "\nRounded to the nearest 10th position = " + num.toFixed(1) +
+        "\nRounded to the nearest 100th position = " + num.toFixed(2) +
+        "\nRounded to the nearest 1000th position = " + num.toFixed(3);
+
+    document.getElementById("output").value = result;
+    document.getElementById("errOut").innerHTML = "";
+}
+
+function res() {
+    document.getElementById("errOut").innerHTML = "";
+    document.getElementById("number").focus();
+}
+</script>
+
+</head>
+
+<body>
+
+<h1>homework 6</h1>
+
+<ul>
+<li><a href="index.html">Homepage</a></li>
+<li><a href="hw6.html">HW6-Main Page</a></li>
+<li><a href="hw6part2.html">HW6-Part2</a></li>
+</ul>
+
+
+<h3>HW6 Part 1: Math and Rounding Exercise</h3>
+
+<form onsubmit="event.preventDefault(); roundNumber();">
+    <label>Enter a number with at least 4 decimals:</label><br>
+    <input type="text" id="number"><br><br>
+    <input type="button" value="Round" onclick="roundNumber()">
+    <input type="reset" value="Reset" onclick="res();"><br><br>
+    <textarea id="output" rows="8" cols="60" readonly></textarea>
+    <p id="errOut" style="color:red;"></p>
+</form>
+
+
+</body>
+</html>
