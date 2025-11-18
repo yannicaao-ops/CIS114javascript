@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- Written by MAN IN AO,November 18, 2025 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="JavaScript Assignments page with links to homework exercises.">
+  <link rel="stylesheet" href="cssstyle.css">
+  <title>Two Cookies</title>
+<script>
+//get cookie by name//
+function getCookie(cname) {
+    let name = cname + "=";
+    let decoded = decodeURIComponent(document.cookie);
+    let ca = decoded.split(';');
+
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+//Set cookie by session//
+function setCookie(cname, cvalue) {
+    document.cookie =
+        cname + "=" + encodeURIComponent(cvalue) +
+        ";path=/" +
+        ";SameSite=Lax";
+}
+
+// check cookies and welcome user
+function checkCookies() {
+    let name = getCookie("name");
+    let username = getCookie("username");
+
+    // If both cookies are found → returning visitor
+    if (name !== "" && username !== "") {
+        document.getElementById("formArea").style.display = "none";
+        document.getElementById("welcomeArea").innerHTML =
+            "<h3>Welcome Back, " + name + " (" + username + ")!</h3>";
+    }
+}
+
+//user submits the form first time//
+function saveCookies() {
+    let name = document.getElementById("userName").value.trim();
+    let username = document.getElementById("userUsername").value.trim();
+
+    if (name === "" || username === "") {
+        alert("Please fill out BOTH fields.");
+        return;
+    }
+
+    // Save both cookies
+    setCookie("name", name);
+    setCookie("username", username);
+
+    // Reload to show Welcome Back message
+    history.go(0);
+}
+
+</script>
+</head>
+
+<body onload="checkCookies()">
+<h3>Homework 7</h3>
+
+<ul>
+  <li><a href="index.html">Homepage</a></li>
+  <li><a href="hw7.html">HW7-Main Page</a></li>
+  <li><a href="hw7part1.html">HW7-Part1</a></li>
+</ul>
+
+<h3>HW7 Part 2: Cookie object</h3>
+<!-- FIRST-TIME FORM -->
+<div id="formArea">
+    <form>
+      <p><label for="name">The name of the user :</label>
+       <input type="text" id="userName" maxlength="40">
+      </p>
+      <p><label for="username">The username of the user :</label>
+       <input type="text" id="userUsername" maxlength="40">
+      </p>
+      <input type="button" value="Submit" onclick="saveCookies();">
+      <input type="reset" value="Reset">
+    </form>
+</div>
+
+<!-- RETURNING VISITOR MESSAGE -->
+<div id="welcomeArea"></div>
+
+</body>
+</html>

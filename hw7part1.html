@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- Written by MAN IN AO, November 18, 2025 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="JavaScript Assignments page with links to homework exercises.">
+  <title>Switch Display Style</title>
+  <link rel="stylesheet" href="cssstyle.css">
+  <style>
+    /* Background color styles */
+    .bg-purple { background-color: lavender; }
+    .bg-yellow { background-color: lightyellow; }
+    .bg-orange { background-color: peachpuff; }
+
+    /* Font styles */
+    .bold { font-weight: bold; }
+    .italic { font-style: italic; }
+    .underline { text-decoration: underline; }
+  </style>
+
+  <script>
+    function updateStyles() {
+      const area = document.getElementById("styledArea");
+
+      // Build a list of class names based on selected options
+      let classList = [];
+
+      // Background color (radio buttons)
+      const bg = document.querySelector('input[name="bgColor"]:checked');
+      if (bg) classList.push(bg.value);
+
+      // Checkboxes for bold, italic, underline
+      const bold = document.getElementById("bold");
+      if (bold.checked) classList.push("bold");
+
+      const italic = document.getElementById("italic");
+      if (italic.checked) classList.push("italic");
+
+      const underline = document.getElementById("underline");
+      if (underline.checked) classList.push("underline");
+
+      // Font size (select)
+      const size = document.getElementById("fontSize").value;
+      if (size !== "#") area.style.fontSize = size;
+      else area.style.fontSize = "initial";
+
+      // Apply all selected classes
+      area.className = classList.join(" ");
+    }
+  </script>
+
+</head>
+
+<body>
+
+<h1>homework 7</h1>
+
+<ul>
+<li><a href="index.html">Homepage</a></li>
+<li><a href="hw7.html">HW7-Main Page</a></li>
+<li><a href="hw7part2.html">HW7-Part2</a></li>
+</ul>
+
+
+<h3>HW7 Part 1: Display Style Switcher</h3>
+
+<form>
+
+  <h3>Background Color</h3>
+  <label><input type="radio" name="bgColor" value="bg-purple" onclick="updateStyles()"> Purple</label><br>
+  <label><input type="radio" name="bgColor" value="bg-yellow" onclick="updateStyles()"> Yellow</label><br>
+  <label><input type="radio" name="bgColor" value="bg-orange" onclick="updateStyles()"> Orange</label><br>
+
+  <h3>Text Style</h3>
+  <label><input type="checkbox" id="bold" onclick="updateStyles()"> Bold</label><br>
+  <label><input type="checkbox" id="italic" onclick="updateStyles()"> Italic</label><br>
+  <label><input type="checkbox" id="underline" onclick="updateStyles()"> Underline</label><br>
+
+  <h3>Font Size</h3>
+  <select id="fontSize" onchange="updateStyles()">
+    <option value="#">--Select size--</option>
+    <option value="0.9rem">Small</option>
+    <option value="1.2rem">Medium</option>
+    <option value="1.5rem">Large</option>
+  </select>
+
+</form>
+
+<hr>
+
+<main id="styledArea">
+  <p>This is the test area where the styles will be applied based on your selections above.</p>
+  <p>You can change the background color, text style, and font size. </p> 
+  <p> Try it out! and see which combination you like best!</p>
+</main>
+
+</body>
+</html>
