@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+<body>
+  <h1>Homework 8 - AJAX Application</h1>
+<ul>
+<li><a href="index.html">Homepage</a></li>
+</ul>
+
+<button type="button" onclick="loadDoc()">Get CD collection</button>
+<br><br>
+<table id="demo"></table>
+
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    myFunction(this);
+  }
+  xhttp.open("GET", "cd_catalog.xml");
+  xhttp.send();
+}
+function myFunction(xml) {
+  const xmlDoc = xml.responseXML;
+  const x = xmlDoc.getElementsByTagName("CD");
+  let table="<tr><th>Artist</th><th>Title</th></tr>";
+  for (let i = 0; i <x.length; i++) { 
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+<h2>REST API</h2>
+<p>Our company wants to improve how patients get help online before seeing a doctor.
+ To do that, we need a tool that can check symptoms, guide patients to the right level of care,
+  and collect important medical information before their visit. After reviewing different 
+  options, I believe the <strong>Infermedica API </strong>is a very good choice for our project.
+</p>
+
+<p>The Infermedica API sends all of its results in JSON format, which is easy for developers to work
+ with. JSON is simple, fast, and works well with websites, mobile apps, and any modern 
+ programming language. This means our team can quickly turn the APIs answers
+ ,such as possible conditions, questions to ask the patient, and suggested care level, 
+ into clear, helpful information for users.
+</p>
+<P>To use the service, we will have an API key, which is used to confirm identity 
+  and protect patient data. This is important because Infermedica follows strict privacy laws,
+   including HIPAA in the U.S. and GDPR in Europe.
+</P>
+<p>
+  Regarding cost, Infermedica has a flexible payment system. Companies can test the API for free,
+   and paid plans depend on how many requests you send and which features you choose. 
+   This makes it easy for us to start small and only pay more as our system grows.
+</P>
+<p>The API also comes with developer support. Their documents explain how to connect to the API, 
+send requests, understand the responses, and handle any errors. you can read the materials here:
+ <a href="https://developer.infermedica.com/docs/introduction"> Infermedica Developer Documentation</a>
+</p>
+<p>Overall, the Infermedica API is a strong choice for our project. It offers accurate medical data,
+ easy integration, and good support, all while keeping patient information safe. 
+ Using this API will help us create a reliable and user-friendly tool that improves how patients
+  get care online before visiting a doctor.
+</p>
+</body>
+</html>
